@@ -1,11 +1,11 @@
-import { listenerCount } from "process";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeaderButtonProps } from "../../types/header";
 import { Post } from "../../types/post";
 import { Card } from "../atom/Card";
 import { Tags } from "../atom/Tags";
 import { ContainerCenter } from "../layout/ContainerGroup";
 import Header from "../layout/Header";
+import PopupModal from "../molecules/Popup";
 
 interface Props {
     list: Post[]
@@ -13,8 +13,14 @@ interface Props {
 
 const Posts: React.FC<Props> = ({list}) => {
 
+    const [toggle, setToggle] = useState<boolean>(false)
+
+    const onClick = () => {
+        setToggle(!toggle)
+    }
+
     const buttonProps: HeaderButtonProps[] = [
-        { name: "Add", onClickHandler: () => {} }
+        { name: "Add", onClickHandler: () => onClick() }
     ]
 
     return (
@@ -39,6 +45,7 @@ const Posts: React.FC<Props> = ({list}) => {
                     </section>
                 </Card>
             ))}
+            <PopupModal toggle={toggle} onClose={onClick} title="Popup Test" content="로앤굿"/>
         </ContainerCenter>
     )
 }

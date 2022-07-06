@@ -25,7 +25,7 @@ const Header:React.FC<HeaderProps> = ({title, buttons}) => {
     return (
         <StyledHeader>
             <h1>{title}</h1>
-            {buttons?.map((v,i) => 
+            {buttons!.length > 0 && buttons?.map((v,i) => 
                 <PrimaryButton key={`btn-${i}`} onClick={() => v.onClickHandler()}>
                     {v.name}
                 </PrimaryButton>)

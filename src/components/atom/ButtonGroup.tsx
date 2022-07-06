@@ -32,6 +32,7 @@ export const PrimaryButton = styled.button`
 export const ConfirmButton = styled.button`
     outline:none;
     height: 40px;
+    botton: 0;
     text-align: center;
     width: 130px;
     border-radius:40px;

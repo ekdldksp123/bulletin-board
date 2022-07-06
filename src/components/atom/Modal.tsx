@@ -24,8 +24,8 @@ export const StyledModal = styled.div`
     overflow-y: auto !important;
     flex-direction: column;
     background: white;
-    width: 350px;
-    height: 200px;
+    width: 550px;
+    height: 75%;
     border-radius: 25px;
     padding-bottom: 20px;
 `;

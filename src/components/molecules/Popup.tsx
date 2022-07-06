@@ -32,10 +32,10 @@ const Modal: React.FC<ModalProps> = ({ toggle, onClose, title, content }) => {
 }
 
 const PopupModal:React.FC<ModalProps> = (props) => {
-    
     //popup시 scroll 동작 막기(web, mobile 모두)
     useEffect(() => {
         if(props.toggle) document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
+        else document.body.style.cssText = '';
     }, [props.toggle]);
 
     return <Portal elementId='portal' child={ <Modal {...props}/> }/>
