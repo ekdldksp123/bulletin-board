@@ -1,18 +1,25 @@
 import { listenerCount } from "process";
 import React from "react";
+import { HeaderButtonProps } from "../../types/header";
 import { Post } from "../../types/post";
 import { Card } from "../atom/Card";
 import { Tags } from "../atom/Tags";
 import { ContainerCenter } from "../layout/ContainerGroup";
+import Header from "../layout/Header";
 
 interface Props {
     list: Post[]
 }
 
 const Posts: React.FC<Props> = ({list}) => {
+
+    const buttonProps: HeaderButtonProps[] = [
+        { name: "Add", onClickHandler: () => {} }
+    ]
+
     return (
         <ContainerCenter>
-            
+            <Header title="Law&Good List" buttons={[...buttonProps]}/>
             {list.length > 0 && list.map((v,i) => (
                 <Card key={`post-${i}`}>
                     <article className="card-content">

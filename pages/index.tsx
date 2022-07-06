@@ -20,6 +20,7 @@ const Main: NextPage = ({data}: InferGetServerSidePropsType<typeof getServerSide
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Posts list={data}/>
+      <div id="portal" />
     </div>
   );
 };
