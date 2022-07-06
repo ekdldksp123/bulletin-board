@@ -8,3 +8,7 @@ export interface Post {
 
 // post 추가용 타입 선언
 export type AddPost<T> = { [key in keyof T]?: T[key] };
+
+export interface Posts {
+    list: Post[]
+}

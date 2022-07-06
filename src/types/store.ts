@@ -7,7 +7,7 @@ export type Popup = {
 
 export type ModalContent = {
     title?: string;
-    post?: Post | AddPost<Post>;
+    post: Post | AddPost<Post>;
     setTitle: (title: string) => void;
     setPost: (id?: number) => void;
 };

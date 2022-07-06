@@ -23,7 +23,7 @@ const getPost = (id?:number) => {
 
 export const usePost = create<ModalContent>((set) => ({
     title: undefined,
-    post: undefined,
+    post: newPost,
     setTitle: (title:string) => set({ title: title}),
     setPost: (id?: number) => set({ post: getPost(id) })
 }))

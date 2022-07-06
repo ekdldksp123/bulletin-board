@@ -6,7 +6,7 @@ export const StyledModalBody = styled.div`
     font-size: 20px;
     color: #808080;
     width: 100%;
-    height: 80px;
+    height: 80%;
 `;
 
 export const StyledModalHeader = styled.div`
@@ -25,7 +25,7 @@ export const StyledModal = styled.div`
     flex-direction: column;
     background: white;
     width: 550px;
-    height: 75%;
+    height: 65%;
     border-radius: 25px;
     padding-bottom: 20px;
 `;
@@ -33,7 +33,7 @@ export const StyledModal = styled.div`
 export const StyledModalTitle = styled.div`
     display: relative;
     margin: 0 auto;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -53,7 +53,6 @@ export const StyledModalOverlay = styled.div`
 export const StyledModalFooter = styled.div`
     position: relative;
     width: 100%;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;

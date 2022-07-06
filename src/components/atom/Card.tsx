@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Card = styled.section`
     width: 50%;
-    height: 500px;
+    height: 350px;
 
     -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
@@ -22,25 +22,38 @@ export const Card = styled.section`
         opacity: 1;
         transform: scale(1.01);
     }
+    
     & .card-content {
         padding: 30px;
     }
+
     & .card-title {
         font-size: 25px;
         font-family: 'Open Sans', sans-serif;
+        margin-top: 0;
     }
+
     & .card-text {
         line-height: 1.6;
+        height: 120px;
+        overflow: hidden;
+        padding: 10px;
     }
+
     & .card-link {
-        display: flex;
-        cursor: pointer;
         color: #fff;
         border-top:1px solid #82c1bb;
-        width: -webkit-fill-available;
-        padding: 25px;  
-        
+        width: 100%;
+        padding: 20px;
+
+        & .button-group {
+            float: left;
+            padding-bottom: 20px;
+        }
+
         & .link-btn {
+            float: left;
+            cursor: pointer;
             margin-right: 20px;
         }
         
@@ -55,6 +68,12 @@ export const Card = styled.section`
         & .link-btn:hover:after {
             width: 100%; 
             left: 0; 
+        }
+
+        & .createdAt {
+            float: right;
+            right: 0;
+            color: #fff;
         }
     }
 

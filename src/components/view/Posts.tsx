@@ -1,50 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { usePost, useToggle } from "../../libs/store.module";
 import { HeaderButtonProps } from "../../types/header";
-import { Post } from "../../types/post";
-import { Card } from "../atom/Card";
-import { Tags } from "../atom/Tags";
+import { Posts } from "../../types/post";
 import { ContainerCenter } from "../layout/ContainerGroup";
 import Header from "../layout/Header";
-import PopupModal from "../molecules/Popup";
+import CardList from "../molecules/Cards";
 
-interface Props {
-    list: Post[]
-}
+/**
+ * 
+ * @author vinchaekim
+ * @param Posts { list: Post[]} 
+ * @since 2022.07.06
+ * 
+ */
 
-const Posts: React.FC<Props> = ({list}) => {
+const Posts: React.FC<Posts> = (props) => {
 
-    const [ modalProps, setModalProps ] = useState<Object>({})
+    const { onClick } = useToggle()
+    const { setTitle, setPost } = usePost()
 
-    const onClick = () => {
+    const onAddClick = () => {
+        setTitle("Add Item")
+        setPost()
+        onClick()
     }
 
     const buttonProps: HeaderButtonProps[] = [
-        { name: "Add", onClickHandler: () => onClick() }
+        { name: "Add", onClickHandler: () => onAddClick() }
     ]
-
+    
     return (
         <ContainerCenter>
             <Header title="Law&Good List" buttons={[...buttonProps]}/>
-            {list.length > 0 && list.map((v,i) => (
-                <Card key={`post-${i}`}>
-                    <article className="card-content">
-                        <h2 className="card-title">{v.title}</h2>
-                        <Tags>
-                            {v.tags.length > 0 && v.tags.map((tag, i) => (
-                                <li key={`tag-${i}`}>
-                                    <span className="tag">{tag}</span>
-                                </li>
-                            ))}
-                        </Tags>
-                        <p className="card-text">{v.description}</p>
-                    </article>
-                    <section key={`btn-group-${i}`} className="card-link">
-                        <a className="link-btn" onClick={() => console.log('edit')}>Edit</a>
-                        <a className="link-btn">Delete</a>
-                    </section>
-                </Card>
-            ))}
-            
+            <CardList {...props}/>            
         </ContainerCenter>
     )
 }
