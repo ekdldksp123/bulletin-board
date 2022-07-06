@@ -4,7 +4,8 @@ import Posts from '../src/components/view/Posts';
 import { getPosts } from '../src/libs/api.module';
 import { sortByDate } from '../src/libs/date.utils';
 import { useEffect, useState } from 'react';
-import { FormModal } from '../src/components/molecules/Popup';
+import { FormModal } from '../src/components/molecules/ModalGroup';
+import { Popup } from '../src/components/molecules/Popup';
 
 /**
  * @author vinchae
@@ -29,7 +30,7 @@ const Main: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Posts list={data}/>
-      { isReady ? <FormModal /> : <></> }
+      { isReady ? <Popup/> : <></> }
     </div>
   );
 };

@@ -30,6 +30,17 @@ export const StyledModal = styled.div`
     padding-bottom: 20px;
 `;
 
+export const StyledPopup = styled.div`
+    display: flex;
+    overflow-y: auto !important;
+    flex-direction: column;
+    background: white;
+    width: 550px;
+    height: 30%;
+    border-radius: 25px;
+    padding-bottom: 20px;
+`;
+
 export const StyledModalTitle = styled.div`
     display: relative;
     margin: 0 auto;

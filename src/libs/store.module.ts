@@ -1,5 +1,5 @@
 import { AddPost, Post } from './../types/post';
-import { Popup, ModalContent } from './../types/store';
+import { Popup, ModalContent, ModalType } from './../types/store';
 import create from 'zustand';
 import { getPostById } from './api.module';
 
@@ -26,4 +26,14 @@ export const usePost = create<ModalContent>((set) => ({
     post: newPost,
     setTitle: (title:string) => set({ title: title}),
     setPost: (id?: number) => set({ post: getPost(id) })
+}))
+
+
+export const useModal = create<ModalType>((set) => ({
+    type: undefined,
+    title: undefined,
+    content: undefined,
+    setType: (type:'form' | 'confirm') => set({ type: type}),
+    setTitle: (title:string) => set({ title: title }),
+    setContent: (content:string) => set({ content: content }),
 }))

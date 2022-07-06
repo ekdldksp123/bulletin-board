@@ -11,3 +11,12 @@ export type ModalContent = {
     setTitle: (title: string) => void;
     setPost: (id?: number) => void;
 };
+
+export type ModalType = {
+    type?: string;
+    title?: string;
+    content?: string;
+    setType: (type: 'form' | 'confirm') => void;
+    setTitle: (title: string) => void;
+    setContent: (content: string) => void;
+}

@@ -15,6 +15,10 @@ const CardList: React.FC<Posts> = ({list}) => {
         onClick()
     }
 
+    const onDeleteClick = () => {
+        
+    }
+
     return (
         <>
             {list.length > 0 && list.map((v,i) => (
@@ -33,7 +37,7 @@ const CardList: React.FC<Posts> = ({list}) => {
                     <section key={`footer-group-${i}`} className="card-link">
                         <section className="button-group">
                             <a className="link-btn" onClick={() => onEditClick()}>Edit</a>
-                            <a className="link-btn">Delete</a>
+                            <a className="link-btn" onClick={() => onDeleteClick()}>Delete</a>
                         </section>
                         <span className="createdAt">{v.createdAt}</span>
                     </section>
