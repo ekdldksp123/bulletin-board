@@ -1,5 +1,5 @@
 import { AddPost, Post } from './../types/post';
-import { Popup, ModalContent, ModalType } from './../types/store';
+import { Popup, FormModalContent, ModalType, ConfirmType } from './../types/store';
 import create from 'zustand';
 import { getPostById } from './api.module';
 
@@ -8,6 +8,7 @@ import { getPostById } from './api.module';
  * @description zustand 를 사용한 Provider, Consumer 전역 상태 관리
  */
 
+// portal 에 팝업을 띄울지 관리
 export const useToggle = create<Popup>((set) => ({
     toggle: false,
     onClick: () => set((state: Popup) => ({ toggle: !state.toggle })),
@@ -21,19 +22,24 @@ const getPost = (id?:number) => {
     return JSON.parse(JSON.stringify(post)) as Post;
 }
 
-export const usePost = create<ModalContent>((set) => ({
+// post 를 add 할지 update 할지
+export const usePost = create<FormModalContent>((set) => ({
     title: undefined,
     post: newPost,
     setTitle: (title:string) => set({ title: title}),
     setPost: (id?: number) => set({ post: getPost(id) })
 }))
 
-
+// modal 타입 구분 form | confirm
 export const useModal = create<ModalType>((set) => ({
     type: undefined,
-    title: undefined,
-    content: undefined,
     setType: (type:'form' | 'confirm') => set({ type: type}),
-    setTitle: (title:string) => set({ title: title }),
-    setContent: (content:string) => set({ content: content }),
+}))
+
+// confirm 모달 내용 관리
+export const useConfirm = create<ConfirmType>((set) => ({
+    caption: undefined,
+    message: undefined,
+    setCaption: (caption:string) => set({ caption: caption }),
+    setMessage: (message:string) => set({ message: message }),
 }))

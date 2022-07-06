@@ -5,7 +5,7 @@ export type Popup = {
     onClick: () => void;
 };
 
-export type ModalContent = {
+export type FormModalContent = {
     title?: string;
     post: Post | AddPost<Post>;
     setTitle: (title: string) => void;
@@ -14,9 +14,15 @@ export type ModalContent = {
 
 export type ModalType = {
     type?: string;
-    title?: string;
-    content?: string;
     setType: (type: 'form' | 'confirm') => void;
-    setTitle: (title: string) => void;
-    setContent: (content: string) => void;
 }
+
+export type ConfirmType = {
+    caption?: string;
+    message?: string;
+    setCaption: (caption: string) => void;
+    setMessage: (message: string) => void;
+}
+
+
+
