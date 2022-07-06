@@ -7,8 +7,10 @@ const api = axios.create({
 
 const POST = '/posts';
 
-export const getPost = async () => {
-  return await api.get(POST);
+export const getPosts = async () => {
+  return await api.get(POST)
+    .then((res) => res.data)
+    .catch((err) => err);
 };
 
 export const addPost = async (newPost: Post) => {
