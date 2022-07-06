@@ -13,7 +13,7 @@ import { Portal } from '../atom/Portal';
  * 
  */
 
-const Modal: React.FC<ModalProps> = ({ toggle, onClose, title, content }) => {
+const Modal: React.FC<ModalProps> = ({ toggle, onClose, title, props }) => {
 
     return toggle ? (
         <StyledModalOverlay onClick={() => onClose()}>
@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ toggle, onClose, title, content }) => {
                     <CloseButton href="#" onClick={() => onClose()}>x</CloseButton>
                     <StyledModalTitle>{title}</StyledModalTitle>
                 </StyledModalHeader>
-                <StyledModalBody>{content}</StyledModalBody>
+                <StyledModalBody>{""}</StyledModalBody>
                 <StyledModalFooter>
                     <ConfirmButton />
                 </StyledModalFooter>

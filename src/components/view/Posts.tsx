@@ -13,10 +13,9 @@ interface Props {
 
 const Posts: React.FC<Props> = ({list}) => {
 
-    const [toggle, setToggle] = useState<boolean>(false)
+    const [ modalProps, setModalProps ] = useState<Object>({})
 
     const onClick = () => {
-        setToggle(!toggle)
     }
 
     const buttonProps: HeaderButtonProps[] = [
@@ -39,13 +38,13 @@ const Posts: React.FC<Props> = ({list}) => {
                         </Tags>
                         <p className="card-text">{v.description}</p>
                     </article>
-                    <section className="card-link">
-                        <a className="link-btn">Edit</a>
+                    <section key={`btn-group-${i}`} className="card-link">
+                        <a className="link-btn" onClick={() => console.log('edit')}>Edit</a>
                         <a className="link-btn">Delete</a>
                     </section>
                 </Card>
             ))}
-            <PopupModal toggle={toggle} onClose={onClick} title="Popup Test" content="로앤굿"/>
+            
         </ContainerCenter>
     )
 }

@@ -7,12 +7,22 @@ const api = axios.create({
 
 const POST = '/posts';
 
-export const getPosts = async () => {
+export const getPosts = async (callback: Function) => {
+  return await api.get(POST)
+    .then((res) => callback(res.data))
+    .catch((err) => err);
+};
+
+export const getPostById = async (id:number) => {
   return await api.get(POST)
     .then((res) => res.data)
     .catch((err) => err);
 };
 
 export const addPost = async (newPost: Post) => {
+  await api.post(POST, newPost);
+};
+
+export const editPost = async (newPost: Post) => {
   await api.post(POST, newPost);
 };
