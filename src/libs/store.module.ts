@@ -36,10 +36,13 @@ export const useModal = create<ModalType>((set) => ({
     setType: (type:'form' | 'confirm') => set({ type: type}),
 }))
 
-// confirm 모달 내용 관리
+// confirm 모달 내용 및 콜백 관리
 export const useConfirm = create<ConfirmType>((set) => ({
     caption: undefined,
     message: undefined,
+    onConfirm: () => {},
     setCaption: (caption:string) => set({ caption: caption }),
     setMessage: (message:string) => set({ message: message }),
+    setOnConfirm: (onConfirmHandler:Function, props: string) => 
+        set({ onConfirm: () => onConfirmHandler(props) }),
 }))

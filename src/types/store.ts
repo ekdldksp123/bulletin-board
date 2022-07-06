@@ -20,8 +20,10 @@ export type ModalType = {
 export type ConfirmType = {
     caption?: string;
     message?: string;
+    onConfirm: Function;
     setCaption: (caption: string) => void;
     setMessage: (message: string) => void;
+    setOnConfirm: (onConfirm: Function, props: string) => void;
 }
 
 

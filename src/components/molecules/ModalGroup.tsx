@@ -1,9 +1,8 @@
-import { MouseEvent, ReactNode, useEffect, useState } from 'react';
-import { useConfirm, useModal, usePost, useToggle } from '../../libs/store.module';
+import { useState } from 'react';
+import { useConfirm, usePost, useToggle } from '../../libs/store.module';
 import { AddPost, Post } from '../../types/post';
 import { CancelButton, CloseButton, ConfirmButton } from '../atom/ButtonGroup';
 import { StyledModal, StyledModalBody, StyledModalFooter, StyledModalHeader, StyledModalOverlay, StyledModalTitle, StyledPopup } from '../atom/Modal';
-import { Portal } from '../atom/Portal';
 import { PostForm } from './FormGroup';
 
 /**
@@ -41,9 +40,9 @@ export const FormModal: React.FC = () => {
 
 export const ConfirmModal: React.FC = () => {
 
-    const { caption, message } = useConfirm()
-    
+    const { caption, message, onConfirm } = useConfirm()
     const { toggle, onClick } = useToggle()
+
     return toggle ? (
         <StyledModalOverlay>
             <StyledPopup>
@@ -55,7 +54,7 @@ export const ConfirmModal: React.FC = () => {
                     {message}
                 </StyledModalBody>
                 <StyledModalFooter>
-                    <ConfirmButton />
+                    <ConfirmButton onClick={ ()=> onConfirm() }/>
                     <CancelButton onClick={ () => onClick() }/>
                 </StyledModalFooter>
             </StyledPopup>

@@ -16,13 +16,19 @@ export const getPosts = async (callback: Function) => {
 export const getPostById = async (id:number) => {
   return await api.get(POST)
     .then((res) => res.data)
-    .catch((err) => err);
+    .catch((err) => err)
 };
 
 export const addPost = async (newPost: Post) => {
-  await api.post(POST, newPost);
+  await api.post(POST, newPost)
 };
 
 export const editPost = async (newPost: Post) => {
-  await api.post(POST, newPost);
+  await api.post(POST, newPost)
 };
+
+export const deletePost = async (id: string) => {
+  return await api.delete(`${POST}/${id}`)
+    .then((res) => 'success')
+    .catch((err) => 'error')
+}
