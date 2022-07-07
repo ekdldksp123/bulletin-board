@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const PrimaryButton = styled.button`
     width: 100px;
-    height: 50px;
+    height: 45px;
 
     font-size: 16px;
     font-weight: 600;

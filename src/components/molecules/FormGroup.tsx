@@ -35,7 +35,6 @@ export const PostForm:React.FC = () => {
     const addTagItem = () => {
         //TODO tag 바로 insert 안되는 문제 해결하기
         setTagList([...tagList, tagItem])
-        setPost({ ...post, tags: tagList } as Post)
         setTagItem('')
     }
 
@@ -47,6 +46,7 @@ export const PostForm:React.FC = () => {
     useEffect(() => {
         if(tagList.length >= 3) setDisabled(true)
         else if(tagList.length < 3) setDisabled(false)
+        setPost({ ...post, tags: tagList } as Post) // TODO add 시 태그 마지막 누락되는 문제 해결해야됨
     }, [tagList])
 
     return (

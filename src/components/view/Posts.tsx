@@ -16,24 +16,8 @@ import CardList from "../molecules/Cards";
 
 const Posts: React.FC<Posts> = (props) => {
 
-    const { onClick } = useToggle()
-    const { setTitle, setPost } = usePost()
-    const { setType } = useModal()
-
-    const onAddClick = () => {
-        setType('form')
-        setTitle("Add Item")
-        setPost()
-        onClick()
-    }
-
-    const buttonProps: HeaderButtonProps[] = [
-        { name: "Add", onClickHandler: () => onAddClick() }
-    ]
-
     return (
         <ContainerCenter>
-            <Header title="Law&Good List" buttons={[...buttonProps]}/>
             <CardList {...props}/>            
         </ContainerCenter>
     )

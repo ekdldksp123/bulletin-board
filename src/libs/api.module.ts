@@ -14,8 +14,8 @@ export const getPosts = async (callback: Function) => {
     .catch((err) => err);
 };
 
-export const getPostById = async (id:number) => {
-  return await api.get(POST)
+export const getPostById = async (id: string) => {
+  return await api.get(`${POST}/${id}`)
     .then((res) => res.data)
     .catch((err) => err)
 };
