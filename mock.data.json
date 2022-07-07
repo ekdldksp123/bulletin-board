@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "Item Title 1",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "tags": [
-        "frontend",
-        "vue"
-      ],
-      "createdAt": "2022-02-20"
-    },
-    {
       "id": 2,
       "title": "Item Title 2",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -199,16 +189,6 @@
         "next"
       ],
       "createdAt": "2022-02-01"
-    },
-    {
-      "title": "test",
-      "description": "test",
-      "tags": [
-        "testv",
-        " test"
-      ],
-      "createdAt": "2022-07-07",
-      "id": 21
     }
   ]
 }

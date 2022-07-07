@@ -9,8 +9,8 @@ import { Popup } from '../src/components/molecules/Popup';
 /**
  * @author vinchae
  * @param data: Post[]
- * mock 데이터를 서버 사이드에서 받아와서 props 로 넘겨준다
- * 1. 이때 최신 날짜 순으로 데이터를 정렬해서 뿌려줄 것! => static props 로 처리!
+ * mock 데이터 리스트를 static props로 받아와서 props 로 넘겨준다
+ * 1. 이때 최신 날짜 순으로 데이터를 정렬해서 뿌려줄 것! 
  */
 
 const Main: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {

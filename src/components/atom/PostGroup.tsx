@@ -1,9 +1,17 @@
 import styled from "@emotion/styled";
 
+export const PostFooter = styled.section`
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+`
+
 export const PostWrapper = styled.article`
     display: flex;
     flex-direction: column;
-    height: 85%;
+    height: 70%;
     width: 100%;
 `;
 
@@ -40,8 +48,9 @@ export const Title = styled.title`
 `
 
 export const Description = styled.section`
+    overflow-y: auto;
     width: 100%;
-    max-height: 78% !important;
+    max-height: 80%;
     overflow-y: auto; 
     font-size: 1.35em;
     color: #6C6B6B;

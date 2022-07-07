@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const PrimaryButton = styled.button`
+export const MainButton = styled.button`
     width: 100px;
     height: 45px;
 
@@ -94,6 +94,66 @@ export const CancelButton = styled.button`
     }
     &:after {
         content:"CANCEL";
+    }
+`
+
+export const PrimaryButton = styled.button`
+    outline:none;
+    width: 130px;
+    height: 40px;
+    margin: 10px;
+
+    text-align: center;
+    text-shadow:0;
+    letter-spacing:1px;
+    color:#0DAD8D;
+    
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid #0DAD8D;
+    
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    
+    &:hover {
+        color:white;
+        background: #0DAD8D;
+    }
+    &:active {
+        letter-spacing: 2px ;
+    }
+`
+
+export const SecondaryButton = styled.button`
+    outline:none;
+    width: 130px;
+    height: 40px;
+    margin: 10px;
+
+    text-align: center;
+    text-shadow:0;
+    letter-spacing:1px;
+    color: #DB4914;
+    
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid #DB4914;
+    
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.25s ease;    
+
+    &:hover {
+        color:white;
+        background: #DB4914;
+    }
+    &:active {
+        letter-spacing: 2px ;
     }
 `
 

@@ -18,3 +18,19 @@ export const updatePost = async (post: Post) => {
         return await editPost(post)
     }
 }
+
+export const onSubmitHandler = async (post: Post, callback: Function[]) => {
+    
+    console.dir(callback)
+    if(!post.id) {
+        // add mode
+        await uploadPost(post)
+            .then(() => callback[0]())
+            .then(() => callback[1]())
+    } else {
+        // edit mode
+        await updatePost(post as Post)
+            .then(() => callback[0]())
+            .then(() => callback[1]())
+    }
+}

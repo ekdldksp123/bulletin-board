@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { updatePost, uploadPost } from '../../libs/post.module';
+import { onSubmitHandler } from '../../libs/post.module';
 import { useConfirm, usePost, useToggle } from '../../libs/store.module';
 import { Post } from '../../types/post';
 import { CancelButton, CloseButton, ConfirmButton } from '../atom/ButtonGroup';
@@ -21,21 +21,6 @@ export const FormModal: React.FC = () => {
     }
     const { title, post } = usePost()
     const { toggle, onClick } = useToggle()
-
-    const onSubmitHandler = async () => {
-        
-        if(!post.id) {
-            // add mode
-            await uploadPost(post)
-                .then(() => refreshData())
-                .then(() => onClick())
-        } else {
-            // edit mode
-            await updatePost(post as Post)
-                .then(() => refreshData())
-                .then(() => onClick())
-        }
-    }
     
     return toggle ? (
         <StyledModalOverlay>
@@ -48,7 +33,7 @@ export const FormModal: React.FC = () => {
                     <PostForm/>
                 </StyledModalBody>
                 <StyledModalFooter>
-                    <ConfirmButton onClick={() => onSubmitHandler()}/>
+                    <ConfirmButton onClick={() => onSubmitHandler(post as Post, [refreshData, onClick])}/>
                     <CancelButton onClick={() => onClick()}/>
                 </StyledModalFooter>
             </StyledModal>

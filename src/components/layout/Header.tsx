@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { HeaderProps } from "../../types/header";
-import { PrimaryButton } from "../atom/ButtonGroup";
+import { MainButton } from "../atom/ButtonGroup";
 
 const StyledHeader = styled.header`
     width: 100vw;
@@ -22,13 +23,14 @@ const StyledHeader = styled.header`
 `
 
 const Header:React.FC<HeaderProps> = ({title, buttons}) => {
+    const router = useRouter()
     return (
         <StyledHeader>
-            <h1 id='title'>{title}</h1>
+            <h1 id='title' onClick={() => router.push('/')}>{title}</h1>
             {buttons!.length > 0 && buttons?.map((v,i) => 
-            <PrimaryButton key={`btn-${i}`} onClick={() => v.onClickHandler()}>
+            <MainButton key={`btn-${i}`} onClick={() => v.onClickHandler()}>
                 {v.name}
-            </PrimaryButton>)
+            </MainButton>)
             }
         </StyledHeader>
     )

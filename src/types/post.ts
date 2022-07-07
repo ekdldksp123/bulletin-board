@@ -13,5 +13,6 @@ export interface Posts {
     list: Post[]
 }
 export interface DetailProps {
-    post: Post
+    post: Post;
+    setPost?: (post: Post) => void;
 }
