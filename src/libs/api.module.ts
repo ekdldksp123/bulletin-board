@@ -9,27 +9,30 @@ const api = axios.create({
 const POST = '/posts';
 
 export const getPosts = async (callback?: Function) => {
-  return await api.get(POST)
+  return await api
+    .get(POST)
     .then((res) => callback && callback(res.data))
     .catch((err) => err);
 };
 
 export const getPostById = async (id: string) => {
-  return await api.get(`${POST}/${id}`)
+  return await api
+    .get(`${POST}/${id}`)
     .then((res) => res.data)
-    .catch((err) => err)
+    .catch((err) => err);
 };
 
 export const addPost = async (newPost: AddPost<Post>) => {
-  await api.post(POST, newPost)
+  await api.post(POST, newPost);
 };
 
 export const editPost = async (editedPost: Post) => {
-  await api.patch(`${POST}/${editedPost.id}`, editedPost)
+  await api.patch(`${POST}/${editedPost.id}`, editedPost);
 };
 
 export const deletePost = async (id: string) => {
-  return await api.delete(`${POST}/${id}`)
+  return await api
+    .delete(`${POST}/${id}`)
     .then((res) => 'success')
-    .catch((err) => 'error')
-}
+    .catch((err) => 'error');
+};

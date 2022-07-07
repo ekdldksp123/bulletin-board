@@ -10,9 +10,9 @@ export interface Post {
 export type AddPost<T> = { [key in keyof T]?: T[key] };
 
 export interface Posts {
-    list: Post[]
+  list: Post[];
 }
 export interface DetailProps {
-    post: Post;
-    setPost?: (post: Post) => void;
+  post: Post;
+  setPost?: (post: Post) => void;
 }

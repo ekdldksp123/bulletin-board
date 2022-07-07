@@ -10,36 +10,37 @@ import { getPostById } from './api.module';
 
 // portal 에 팝업을 띄울지 관리
 export const useToggle = create<Popup>((set) => ({
-    toggle: false,
-    onClick: () => set((state: Popup) => ({ toggle: !state.toggle })),
-}))
+  toggle: false,
+  onClick: () => set((state: Popup) => ({ toggle: !state.toggle })),
+}));
 
-const newPost: AddPost<Post> = {}
+const newPost: AddPost<Post> = {};
 
 // post 를 add 할지 update 할지
 export const usePost = create<FormModal>((set) => ({
-    title: undefined,
-    post: newPost,
-    onSubmit: () => { console.log('submit' )},
-    setTitle: (title:string) => set({ title: title}),
-    setPost: (post?: Post) => set({ post: post ? post : newPost }),
-    setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) => 
-        set({ onSubmit: () => onSubmitHandler(post)})
-}))
+  title: undefined,
+  post: newPost,
+  onSubmit: () => {
+    console.log('submit');
+  },
+  setTitle: (title: string) => set({ title: title }),
+  setPost: (post?: Post) => set({ post: post ? post : newPost }),
+  setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) =>
+    set({ onSubmit: () => onSubmitHandler(post) }),
+}));
 
 // modal 타입 구분 form | confirm
 export const useModal = create<ModalType>((set) => ({
-    type: undefined,
-    setType: (type:'form' | 'confirm') => set({ type: type}),
-}))
+  type: undefined,
+  setType: (type: 'form' | 'confirm') => set({ type: type }),
+}));
 
 // confirm 모달 내용 및 콜백 관리
 export const useConfirm = create<ConfirmType>((set) => ({
-    caption: undefined,
-    message: undefined,
-    onConfirm: () => {},
-    setCaption: (caption:string) => set({ caption: caption }),
-    setMessage: (message:string) => set({ message: message }),
-    setOnConfirm: (onConfirmHandler:Function, props: string) => 
-        set({ onConfirm: () => onConfirmHandler(props) }),
-}))
+  caption: undefined,
+  message: undefined,
+  onConfirm: () => {},
+  setCaption: (caption: string) => set({ caption: caption }),
+  setMessage: (message: string) => set({ message: message }),
+  setOnConfirm: (onConfirmHandler: Function, props: string) => set({ onConfirm: () => onConfirmHandler(props) }),
+}));
