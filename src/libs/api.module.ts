@@ -8,9 +8,9 @@ const api = axios.create({
 
 const POST = '/posts';
 
-export const getPosts = async (callback: Function) => {
+export const getPosts = async (callback?: Function) => {
   return await api.get(POST)
-    .then((res) => callback(res.data))
+    .then((res) => callback && callback(res.data))
     .catch((err) => err);
 };
 
