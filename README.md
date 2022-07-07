@@ -18,6 +18,7 @@ yarn dev
 - React
 - Next.js
 - Typescript
+- Zustand
 - Emotion.js
 - mock-server (json-server)
   - 사용한 이유
