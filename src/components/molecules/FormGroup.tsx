@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { usePost } from "../../libs/store.module";
 import { AddPost, Post } from "../../types/post";
 import { Input, TagBox, TagInput, TagItem, TextArea } from "../atom/InputGroup";
 
@@ -10,24 +11,19 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
 `
+export const PostForm:React.FC = () => {
 
-interface FormProps {
-    post: Post | AddPost<Post>
-}
+    const { post, setPost } = usePost()
 
-export const PostForm:React.FC<FormProps> = ({post}) => {
-    const [formData, setFormData] = useState<Post | AddPost<Post>>({...post});
     const [tagItem, setTagItem] = useState<string>('')
-    const [tagList, setTagList] = useState<string[]>(formData.tags ? formData.tags : [])
+    const [tagList, setTagList] = useState<string[]>(post.tags ? post.tags : [])
     const [disabled, setDisabled] = useState<boolean>(false)
 
-    useEffect(() => {
-        if(tagList.length >= 3) setDisabled(true)
-        else if(tagList.length < 3) setDisabled(false)
-    }, [tagList])
-
     const onChangeHandler = (e:any) => {
-        setFormData({[e.target.name]: e.target.value})
+        setPost({
+            ...post,
+            [e.target.name]: e.target.value
+        } as Post)
     }
 
     const onKeyDownHandler = (e:any) => {
@@ -39,6 +35,10 @@ export const PostForm:React.FC<FormProps> = ({post}) => {
     const addTagItem = () => {
         setTagList([...tagList, tagItem])
         setTagItem('')
+        setPost({ 
+            ...post,
+            tags: tagList 
+        } as Post)
     }
 
     const deleteTagItem = (deleteTagItem:string) => {
@@ -46,20 +46,29 @@ export const PostForm:React.FC<FormProps> = ({post}) => {
         setTagList([...filteredTagList])
     }
 
+    useEffect(() => {
+        if(tagList.length >= 3) setDisabled(true)
+        else if(tagList.length < 3) setDisabled(false)
+    }, [tagList])
+
+    // useEffect(() => {
+    //     if(post) setTagList(post.tags ? post.tags : [])
+    // },[])
+
     return (
         <Form>
             <Input 
                 name="title"
                 type="text" 
                 placeholder="Title"
-                value={formData.title}
+                value={post.title}
                 maxLength={40}
                 onChange={(e) => onChangeHandler(e)}
             />
             <TextArea 
                 name="description"
                 placeholder="Description"
-                value={formData.description}
+                value={post.description}
                 maxLength={1000}
                 onChange={(e) => onChangeHandler(e)}
             />

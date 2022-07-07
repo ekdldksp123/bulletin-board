@@ -1,5 +1,5 @@
 import { AddPost, Post } from './../types/post';
-import { Popup, FormModalContent, ModalType, ConfirmType } from './../types/store';
+import { Popup, FormModal, ModalType, ConfirmType } from './../types/store';
 import create from 'zustand';
 import { getPostById } from './api.module';
 
@@ -17,11 +17,14 @@ export const useToggle = create<Popup>((set) => ({
 const newPost: AddPost<Post> = {}
 
 // post 를 add 할지 update 할지
-export const usePost = create<FormModalContent>((set) => ({
+export const usePost = create<FormModal>((set) => ({
     title: undefined,
     post: newPost,
+    onSubmit: () => { console.log('submit' )},
     setTitle: (title:string) => set({ title: title}),
-    setPost: (post?: Post) => set({ post: post ? post : newPost })
+    setPost: (post?: Post) => set({ post: post ? post : newPost }),
+    setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) => 
+        set({ onSubmit: () => onSubmitHandler(post)})
 }))
 
 // modal 타입 구분 form | confirm

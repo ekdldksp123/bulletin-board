@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { updatePost, uploadPost } from '../../libs/post.module';
 import { useConfirm, usePost, useToggle } from '../../libs/store.module';
 import { AddPost, Post } from '../../types/post';
 import { CancelButton, CloseButton, ConfirmButton } from '../atom/ButtonGroup';
@@ -14,9 +16,29 @@ import { PostForm } from './FormGroup';
  */
 
 export const FormModal: React.FC = () => {
+    const router = useRouter();
+    const refreshData = () => {
+        router.replace(router.asPath);
+    }
+
     const { toggle, onClick } = useToggle()
     const { title, post } = usePost()
 
+    const onSubmitHandler = async () => {
+        
+        if(!post.id) {
+            // add mode
+            await uploadPost(post)
+                .then(() => refreshData())
+                .then(() => onClick())
+        } else {
+            // edit mode
+            await updatePost(post as Post)
+                .then(() => refreshData())
+                .then(() => onClick())
+        }
+    }
+    
     return toggle ? (
         <StyledModalOverlay>
             <StyledModal>
@@ -25,10 +47,10 @@ export const FormModal: React.FC = () => {
                     <StyledModalTitle>{title}</StyledModalTitle>
                 </StyledModalHeader>
                 <StyledModalBody>
-                    <PostForm post={post}/>
+                    <PostForm />
                 </StyledModalBody>
                 <StyledModalFooter>
-                    <ConfirmButton />
+                    <ConfirmButton onClick={() => onSubmitHandler()}/>
                     <CancelButton onClick={() => onClick()}/>
                 </StyledModalFooter>
             </StyledModal>

@@ -122,7 +122,6 @@ export const TagInput = styled.input`
 
     &::placeholder {
         color: #616161;
-        font-weight: bold;
     }
 `
 

@@ -5,11 +5,13 @@ export type Popup = {
     onClick: () => void;
 };
 
-export type FormModalContent = {
+export type FormModal = {
     title?: string;
     post: Post | AddPost<Post>;
+    onSubmit: Function;
     setTitle: (title: string) => void;
     setPost: (post?: Post) => void;
+    setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) => void;
 };
 
 export type ModalType = {

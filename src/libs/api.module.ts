@@ -1,3 +1,4 @@
+import { AddPost } from './../types/post';
 import axios from 'axios';
 import { Post } from '../types/post';
 
@@ -19,12 +20,12 @@ export const getPostById = async (id:number) => {
     .catch((err) => err)
 };
 
-export const addPost = async (newPost: Post) => {
+export const addPost = async (newPost: AddPost<Post>) => {
   await api.post(POST, newPost)
 };
 
 export const editPost = async (newPost: Post) => {
-  await api.post(POST, newPost)
+  await api.patch(POST, newPost)
 };
 
 export const deletePost = async (id: string) => {
