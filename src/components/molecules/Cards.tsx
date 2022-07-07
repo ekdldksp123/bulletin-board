@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { deletePost } from "../../libs/api.module";
 import { useConfirm, useModal, usePost, useToggle } from "../../libs/store.module";
 import { Post, Posts } from "../../types/post"
-import { Card } from "../atom/Card";
+import { Card } from "../atom/CardGroup";
 import { Tags } from "../atom/Tags";
 
 const CardList: React.FC<Posts> = ({list}) => {
@@ -39,12 +39,16 @@ const CardList: React.FC<Posts> = ({list}) => {
         onClick()
     }
 
+    const navigate = (id: string) => {
+        router.push({pathname:'/detail', query: {id: id}})
+    }
+
     return (
         <>
             {list.length > 0 && list.map((v,i) => (
                 <Card key={`post-${i}`}>
                     <article className="card-content">
-                        <h2 className="card-title">{v.title}</h2>
+                        <h2 className="card-title" onClick={() => navigate(v.id)}>{v.title}</h2>
                         <Tags>
                             {v.tags.length > 0 && v.tags.map((tag, i) => (
                                 <li key={`tag-${i}`}>
@@ -52,7 +56,7 @@ const CardList: React.FC<Posts> = ({list}) => {
                                 </li>
                             ))}
                         </Tags>
-                        <section className="card-text">{v.description}</section>
+                        <section className="card-text" onClick={() => navigate(v.id)}>{v.description}</section>
                     </article>
                     <section key={`footer-group-${i}`} className="card-link">
                         <section className="button-group">

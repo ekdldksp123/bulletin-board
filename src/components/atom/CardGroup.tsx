@@ -28,12 +28,14 @@ export const Card = styled.section`
     }
 
     & .card-title {
+        cursor: pointer;
         font-size: 25px;
         font-family: 'Open Sans', sans-serif;
         margin-top: 0;
     }
 
     & .card-text {
+        cursor: pointer;
         line-height: 1.6;
         height: 120px;
         overflow: hidden;

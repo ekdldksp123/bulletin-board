@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useModal, usePost, useToggle } from "../../libs/store.module";
-import { HeaderButtonProps } from "../../types/header";
+import React from "react";
 import { Posts } from "../../types/post";
 import { ContainerCenter } from "../layout/ContainerGroup";
-import Header from "../layout/Header";
 import CardList from "../molecules/Cards";
 
 /**

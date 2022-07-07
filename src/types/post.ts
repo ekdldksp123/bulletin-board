@@ -12,3 +12,6 @@ export type AddPost<T> = { [key in keyof T]?: T[key] };
 export interface Posts {
     list: Post[]
 }
+export interface DetailProps {
+    post: Post
+}
