@@ -8,7 +8,7 @@ import { PostForm } from './FormGroup';
 /**
  * 
  * @author vinchaekim
- * @description popup modal portal 에 띄우기
+ * @description atomic modal group
  * @since 2022.07.07
  * 
  */
@@ -16,8 +16,6 @@ import { PostForm } from './FormGroup';
 export const FormModal: React.FC = () => {
     const { toggle, onClick } = useToggle()
     const { title, post } = usePost()
-
-    const [ form, setForm ] = useState<Post | AddPost<Post>>({...post});
 
     return toggle ? (
         <StyledModalOverlay>
@@ -27,11 +25,11 @@ export const FormModal: React.FC = () => {
                     <StyledModalTitle>{title}</StyledModalTitle>
                 </StyledModalHeader>
                 <StyledModalBody>
-                    <PostForm/>
+                    <PostForm post={post}/>
                 </StyledModalBody>
                 <StyledModalFooter>
                     <ConfirmButton />
-                    <CancelButton />
+                    <CancelButton onClick={() => onClick()}/>
                 </StyledModalFooter>
             </StyledModal>
         </StyledModalOverlay>

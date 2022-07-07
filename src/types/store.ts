@@ -9,7 +9,7 @@ export type FormModalContent = {
     title?: string;
     post: Post | AddPost<Post>;
     setTitle: (title: string) => void;
-    setPost: (id?: number) => void;
+    setPost: (post?: Post) => void;
 };
 
 export type ModalType = {

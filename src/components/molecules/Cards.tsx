@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
 import { deletePost } from "../../libs/api.module";
 import { useConfirm, useModal, usePost, useToggle } from "../../libs/store.module";
-import { Posts } from "../../types/post"
+import { Post, Posts } from "../../types/post"
 import { Card } from "../atom/Card";
 import { Tags } from "../atom/Tags";
 
@@ -12,16 +12,16 @@ const CardList: React.FC<Posts> = ({list}) => {
     const refreshData = () => {
         router.replace(router.asPath);
     }
-    
+
     const { setTitle, setPost } = usePost()
     const { onClick } = useToggle()
     const { setType } = useModal()
     const { setCaption, setMessage, setOnConfirm } = useConfirm()
 
-    const onEditClick = () => {
+    const onEditClick = (post:Post) => {
         setType('form')
         setTitle("Edit Item")
-        setPost()
+        setPost(post)
         onClick()
     }
 
@@ -56,7 +56,7 @@ const CardList: React.FC<Posts> = ({list}) => {
                     </article>
                     <section key={`footer-group-${i}`} className="card-link">
                         <section className="button-group">
-                            <a className="link-btn" onClick={() => onEditClick()}>Edit</a>
+                            <a className="link-btn" onClick={() => onEditClick(v)}>Edit</a>
                             <a className="link-btn" onClick={() => onDeleteClick(v.id, v.title)}>Delete</a>
                         </section>
                         <span className="createdAt">{v.createdAt}</span>

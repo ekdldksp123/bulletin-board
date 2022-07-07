@@ -15,19 +15,13 @@ export const useToggle = create<Popup>((set) => ({
 }))
 
 const newPost: AddPost<Post> = {}
-const getPost = (id?:number) => {
-    if(!id) return newPost;
-
-    const post = getPostById(id);
-    return JSON.parse(JSON.stringify(post)) as Post;
-}
 
 // post 를 add 할지 update 할지
 export const usePost = create<FormModalContent>((set) => ({
     title: undefined,
     post: newPost,
     setTitle: (title:string) => set({ title: title}),
-    setPost: (id?: number) => set({ post: getPost(id) })
+    setPost: (post?: Post) => set({ post: post ? post : newPost })
 }))
 
 // modal 타입 구분 form | confirm

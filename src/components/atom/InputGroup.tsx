@@ -19,8 +19,7 @@ export const Input = styled.input`
     
     &:focus {
         background: none repeat scroll 0 0 f5f5f5;
-        border-color: #f5f5f5;
-        outline-color: #616161;
+        outline: none;
         color: #616161;
         font-weight: bold;
 
@@ -58,7 +57,7 @@ export const TextArea = styled.textarea`
     &:focus {
         background: none repeat scroll 0 0 f5f5f5;
         border-color: #f5f5f5;
-        outline-color: #616161;
+        outline: none;
         color: #616161;
         font-weight: bold;
 
@@ -77,3 +76,53 @@ export const TextArea = styled.textarea`
         background-color: rgb(232, 240, 254);
     }
 `
+
+export const TagBox = styled.div`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 50px;
+    width: 100%;
+    margin: 10px;
+    padding: 0 10px;
+    
+    background: repeat scroll 0 0 transparent;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    border: none;
+
+    &:focus-within {
+        border-color: #616161;
+    }
+`
+export const TagItem = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    background-color: tomato;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+
+    & .close {
+        color: white;
+        text-decoration: none;
+    }
+`
+
+export const TagInput = styled.input`
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: text;
+
+    font-size: 1rem;
+
+    &::placeholder {
+        color: #616161;
+        font-weight: bold;
+    }
+`
+
