@@ -20,10 +20,11 @@ yarn dev
 - Typescript
 - Emotion.js
 - mock-server (json-server)
-- 사용한 이유
-- 실제 api 서버처럼 RESTFul api 를 지원한다
-- 서버 기동시 더미 데이터 파일 위치만 알려주면 별도의 data init(insert) 과정이 필요 없다
-- 앱 사용 후 로컬 스토리지는 코드로 지워주어야 하는데 json-server 는 런타임에만 존재하는 데이터를 활용할 수 있다.
+  - 사용한 이유
+    - 실제 api 서버처럼 RESTFul api 를 지원한다
+    - 서버 기동시 더미 데이터 파일 위치만 알려주면 별도의 data init(insert) 과정이 필요 없다
+    - 앱 사용 후 로컬 스토리지는 코드로 지워주어야 하는데 json-server 는 런타임에만 존재하는 데이터를 활용할 수 있다.
+    - 데이터가 추가, 수정, 삭제되면 json 파일에도 반영되어 데이터가 유지된다
 - Jest
 - Eslint & Prettier
 - Gitmoji (의미 있는 && 알아보기 쉬운 커밋 메세지 작성하기)
