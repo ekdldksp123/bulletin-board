@@ -4,13 +4,13 @@ import { usePost } from "../../libs/store.module";
 import { AddPost, Post } from "../../types/post";
 import { Input, TagBox, TagInput, TagItem, TextArea } from "../atom/InputGroup";
 
-const Form = styled.form`
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
+/**
+ * 
+ * @author vinchaekim
+ * @description add 및 edit 공통 form
+ * 
+ */
+
 export const PostForm:React.FC = () => {
 
     const { post, setPost } = usePost()
@@ -26,19 +26,17 @@ export const PostForm:React.FC = () => {
         } as Post)
     }
 
-    const onKeyDownHandler = (e:any) => {
-        // Space bar (keyCode = 0) 와 태그 리스트가 3개 미만일때만 태그 추가 가능
+    const onKeyPressHandler = (e:any) => {
+        // Space bar (keyCode = 0) 와 태그 리스트가 3개 미만일 때만 태그 추가 가능
         if (e.target.value.length !== 0 && e.charCode === 32 && tagList.length < 3) {
             addTagItem()
         }
     }
     const addTagItem = () => {
+        //TODO tag 바로 insert 안되는 문제 해결하기
         setTagList([...tagList, tagItem])
+        setPost({ ...post, tags: tagList } as Post)
         setTagItem('')
-        setPost({ 
-            ...post,
-            tags: tagList 
-        } as Post)
     }
 
     const deleteTagItem = (deleteTagItem:string) => {
@@ -50,10 +48,6 @@ export const PostForm:React.FC = () => {
         if(tagList.length >= 3) setDisabled(true)
         else if(tagList.length < 3) setDisabled(false)
     }, [tagList])
-
-    // useEffect(() => {
-    //     if(post) setTagList(post.tags ? post.tags : [])
-    // },[])
 
     return (
         <Form>
@@ -87,7 +81,7 @@ export const PostForm:React.FC = () => {
                     tabIndex={2}
                     onChange={e => setTagItem(e.target.value)}
                     value={tagItem}
-                    onKeyPress={(e) => onKeyDownHandler(e)}
+                    onKeyPress={(e) => onKeyPressHandler(e)}
                     disabled={disabled}
                 />
             </TagBox>
@@ -95,3 +89,10 @@ export const PostForm:React.FC = () => {
     )
 }
 
+const Form = styled.form`
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
