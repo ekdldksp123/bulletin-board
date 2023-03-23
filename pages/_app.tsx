@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const buttonProps: HeaderButtonProps[] = [{ name: 'Add', onClickHandler: () => onAddClick() }];
   return (
     <ContainerCenter>
-      <Header title="Law&Good List" buttons={[...buttonProps]} />
+      <Header title="Bulletin Board" buttons={[...buttonProps]} />
       <Component {...pageProps} />
     </ContainerCenter>
   );

@@ -1,4 +1,10 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import type {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+  NextPage,
+} from 'next';
 import Head from 'next/head';
 import Posts from '../src/components/view/Posts';
 import { getPosts } from '../src/libs/api.module';
@@ -13,7 +19,7 @@ import { Popup } from '../src/components/molecules/Popup';
  * 1. 이때 최신 날짜 순으로 데이터를 정렬해서 뿌려줄 것!
  */
 
-const Main: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Main: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,8 +29,7 @@ const Main: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>
   return (
     <div>
       <Head>
-        <title>Law&amp;Good List</title>
-        <meta name="Law & Good list" content="로앤굿 프론트엔드 과제입니다" />
+        <title>Bulletin Board</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Posts list={data} />
@@ -35,7 +40,7 @@ const Main: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>
 
 export default Main;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await getPosts(sortByDate);
   return { props: { data: posts } };
 };

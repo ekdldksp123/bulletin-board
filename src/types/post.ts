@@ -1,9 +1,9 @@
-export interface Post {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  createdAt: string;
+export class Post {
+  id: string = '';
+  title: string = '';
+  description: string = '';
+  tags: string[] = [];
+  createdAt: string = '';
 }
 
 // post 추가용 타입 선언

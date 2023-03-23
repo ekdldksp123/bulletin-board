@@ -10,7 +10,7 @@ export type FormModal = {
   post: Post | AddPost<Post>;
   onSubmit: Function;
   setTitle: (title: string) => void;
-  setPost: (post?: Post) => void;
+  setPost: (post?: Post | AddPost<Post>) => void;
   setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) => void;
 };
 

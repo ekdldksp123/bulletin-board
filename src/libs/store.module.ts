@@ -20,11 +20,9 @@ const newPost: AddPost<Post> = {};
 export const usePost = create<FormModal>((set) => ({
   title: undefined,
   post: newPost,
-  onSubmit: () => {
-    console.log('submit');
-  },
+  onSubmit: () => {},
   setTitle: (title: string) => set({ title: title }),
-  setPost: (post?: Post) => set({ post: post ? post : newPost }),
+  setPost: (post?: Post | AddPost<Post>) => set({ post: post ? post : newPost }),
   setOnSubmit: (onSubmitHandler: Function, post: Post | AddPost<Post>) =>
     set({ onSubmit: () => onSubmitHandler(post) }),
 }));
