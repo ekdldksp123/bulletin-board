@@ -1,6 +1,4 @@
-# LawAndGood
-
-로앤굿 프론트엔드 과제입니다
+# Bulletin-Board
 
 ## 프로젝트 실행 방법
 
