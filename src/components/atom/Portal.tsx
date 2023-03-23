@@ -13,7 +13,8 @@ import { PortalProps } from '../../types/portal';
  *
  */
 
-export const Portal: React.FC<PortalProps> = ({ elementId, child }: PortalProps) => {
-  const rootElement = useMemo(() => document.getElementById(elementId), [elementId]) as HTMLElement;
+export const Portal = ({ elementId, child }: PortalProps) => {
+  const rootElement: HTMLElement | null = useMemo(() => document.getElementById(elementId), [elementId]);
+  if (!rootElement) return;
   return createPortal(child, rootElement);
 };

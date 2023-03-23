@@ -26,7 +26,7 @@ export const addPost = async (newPost: AddPost<Post>) => {
   await api.post(POST, newPost);
 };
 
-export const editPost = async (editedPost: Post) => {
+export const editPost = async (editedPost: Post | AddPost<Post>) => {
   await api.patch(`${POST}/${editedPost.id}`, editedPost);
 };
 

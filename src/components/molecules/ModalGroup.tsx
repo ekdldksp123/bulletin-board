@@ -43,7 +43,7 @@ export const FormModal: React.FC = () => {
           <PostForm />
         </StyledModalBody>
         <StyledModalFooter>
-          <ConfirmButton onClick={() => onSubmitHandler(post as Post, [refreshData, onClick])} />
+          <ConfirmButton onClick={() => onSubmitHandler(post, [refreshData, onClick])} />
           <CancelButton onClick={() => onClick()} />
         </StyledModalFooter>
       </StyledModal>

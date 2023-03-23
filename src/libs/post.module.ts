@@ -11,7 +11,7 @@ export const uploadPost = async (post: AddPost<Post>) => {
   }
 };
 
-export const updatePost = async (post: Post) => {
+export const updatePost = async (post: Post | AddPost<Post>) => {
   if (!post.title) alert('Please write a title');
   else if (!post.description) alert('Please write a description');
   else {
@@ -19,8 +19,7 @@ export const updatePost = async (post: Post) => {
   }
 };
 
-export const onSubmitHandler = async (post: Post, callback: Function[]) => {
-  console.dir(callback);
+export const onSubmitHandler = async (post: Post | AddPost<Post>, callback: Function[]) => {
   if (!post.id) {
     // add mode
     await uploadPost(post)
@@ -28,7 +27,7 @@ export const onSubmitHandler = async (post: Post, callback: Function[]) => {
       .then(() => callback[1]());
   } else {
     // edit mode
-    await updatePost(post as Post)
+    await updatePost(post)
       .then(() => callback[0]())
       .then(() => callback[1]());
   }
